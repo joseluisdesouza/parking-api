@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -39,7 +38,7 @@ public class ParkingSpotController {
     @PostMapping
     // @Valid incluso no parametro faz com que as validações no dto sejam realizadas
     public ResponseEntity<Object> save(@RequestBody @Valid ParkingSpotDto parkingSpotDto) {
-        if (parkingSpotService.existsByLicensePlateCar(parkingSpotDto.getLicensePlateCar())) {
+        if (parkingSpotService.existsByCarModelLicensePlateCar(parkingSpotDto.getLicensePlateCar())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflict: License Plate Car is already in use!");
         }
         if (parkingSpotService.existsByParkingSpotNumber(parkingSpotDto.getParkingSpotNumber())) {
@@ -55,7 +54,7 @@ public class ParkingSpotController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ParkingSpotModel>> getAllParkingSpots(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+    public ResponseEntity<Page<ParkingSpotModel>> getAllParkingSpots(@PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll(pageable));
     }
 
@@ -91,6 +90,10 @@ public class ParkingSpotController {
         parkingSpotModel.setBrandCar(parkingSpotDto.getBrandCar());
         parkingSpotModel.setModelCar(parkingSpotDto.getModelCar());
         parkingSpotModel.setColorCar(parkingSpotDto.getColorCar());
+//        parkingSpotModel.setLicensePlateCar(parkingSpotDto.getLicensePlateCar());
+//        parkingSpotModel.setBrandCar(parkingSpotDto.getBrandCar());
+//        parkingSpotModel.setModelCar(parkingSpotDto.getModelCar());
+//        parkingSpotModel.setColorCar(parkingSpotDto.getColorCar());
         parkingSpotModel.setResponsibleName(parkingSpotDto.getResponsibleName());
         parkingSpotModel.setApartment(parkingSpotDto.getApartment());
         parkingSpotModel.setBlock(parkingSpotDto.getBlock());

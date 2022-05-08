@@ -8,6 +8,12 @@ public class ParkingSpotDto {
     @NotBlank
     private String parkingSpotNumber;
     @NotBlank
+    private String responsibleName;
+    @NotBlank
+    private String apartment;
+    @NotBlank
+    private String block;
+
     @Size(max = 7)
     private String licensePlateCar;
     @NotBlank
@@ -16,12 +22,6 @@ public class ParkingSpotDto {
     private String modelCar;
     @NotBlank
     private String colorCar;
-    @NotBlank
-    private String responsibleName;
-    @NotBlank
-    private String apartment;
-    @NotBlank
-    private String block;
 
     public String getParkingSpotNumber() {
         return parkingSpotNumber;
@@ -29,6 +29,30 @@ public class ParkingSpotDto {
 
     public void setParkingSpotNumber(String parkingSpotNumber) {
         this.parkingSpotNumber = parkingSpotNumber;
+    }
+
+    public String getResponsibleName() {
+        return responsibleName;
+    }
+
+    public void setResponsibleName(String responsibleName) {
+        this.responsibleName = responsibleName;
+    }
+
+    public String getApartment() {
+        return apartment;
+    }
+
+    public void setApartment(String apartment) {
+        this.apartment = apartment;
+    }
+
+    public String getBlock() {
+        return block;
+    }
+
+    public void setBlock(String block) {
+        this.block = block;
     }
 
     public String getLicensePlateCar() {
@@ -61,29 +85,5 @@ public class ParkingSpotDto {
 
     public void setColorCar(String colorCar) {
         this.colorCar = colorCar;
-    }
-
-    public String getResponsibleName() {
-        return responsibleName;
-    }
-
-    public void setResponsibleName(String responsibleName) {
-        this.responsibleName = responsibleName;
-    }
-
-    public String getApartment() {
-        return apartment;
-    }
-
-    public void setApartment(String apartment) {
-        this.apartment = apartment;
-    }
-
-    public String getBlock() {
-        return block;
-    }
-
-    public void setBlock(String block) {
-        this.block = block;
     }
 }
