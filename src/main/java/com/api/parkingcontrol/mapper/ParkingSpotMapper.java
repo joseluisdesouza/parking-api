@@ -9,5 +9,5 @@ import org.mapstruct.factory.Mappers;
 public abstract class ParkingSpotMapper {
     public static final ParkingSpotMapper INSTANCE = Mappers.getMapper(ParkingSpotMapper.class);
 
-    public abstract ParkingSpotDto toParkingSpotDTO(ParkingSpotModel parkingSpotModel);
+    public abstract ParkingSpotModel convertToEntity(ParkingSpotDto parkingSpotDto);
 }

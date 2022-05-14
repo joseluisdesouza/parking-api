@@ -1,5 +1,6 @@
 package com.api.parkingcontrol.dtos;
 
+import com.api.parkingcontrol.models.ParkingSpotModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,4 +34,16 @@ public class ParkingSpotDto {
     private String modelCar;
     @NotBlank
     private String colorCar;
+
+    public ParkingSpotDto(ParkingSpotModel parkingSpotModel) {
+        this.parkingSpotNumber = parkingSpotModel.getParkingSpotNumber();
+        this.responsibleName = parkingSpotModel.getResponsibleName();
+        this.apartment = parkingSpotModel.getApartment();
+        this.block = parkingSpotModel.getBlock();
+
+        this.licensePlateCar = parkingSpotModel.getLicensePlateCar();
+        this.brandCar = parkingSpotModel.getBrandCar();
+        this.modelCar = parkingSpotModel.getModelCar();
+        this.colorCar = parkingSpotModel.getColorCar();
+    }
 }
